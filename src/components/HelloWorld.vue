@@ -10,12 +10,12 @@
 export default {
   name: "HelloWorld",
   setup(compApi) {
-    const { ref, data, inject, onMounted } = compApi
+    const { refs, ref, inject, onMounted } = compApi
     const foo = inject('foo')
-    const list = data([1, 2, 3])
+    const list = ref([1, 2, 3])
 
-    const divs = ref([])
-    const root = ref(null)
+    const divs = refs([])
+    const root = refs(null)
     onMounted(() => {
       // 在渲染完成后, 这个 div DOM 会被赋值给 root ref 对象
       console.log(divs.value, root.value) // <div/>

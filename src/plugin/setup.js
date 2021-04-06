@@ -168,7 +168,7 @@ SetUp.install = function(Vue) {
       };
       const compositionApi = {
         props: propsData,
-        ref(val) {
+        refs(val) {
           let _val = val
           return {
             unique: generateUnique(),
@@ -186,7 +186,10 @@ SetUp.install = function(Vue) {
             __TYPE__: REF_EL
           }
         },
-        data(val) {
+        reactive(val) {
+          console.log(val)
+        },
+        ref(val) {
           let _val = val
           return {
             unique: generateUnique(),

@@ -15,9 +15,9 @@
 import HelloWorld from "./components/HelloWorld";
 
 function useMousePosition(compApi) {
-  const { data, onMounted, onUnmounted } = compApi;
-  const x = data(0)
-  const y = data(0)
+  const { ref, onMounted, onUnmounted } = compApi;
+  const x = ref(0)
+  const y = ref(0)
 
   function update(e) {
     x.value = e.pageX
@@ -38,9 +38,9 @@ function useMousePosition(compApi) {
 export default {
   name: "App",
   setup(compApi, vm) {
-    const { provide, props, data, computed, watch, onMounted } = compApi;
+    const { provide, props, ref, computed, watch, onMounted } = compApi;
     const { x, y } = useMousePosition(compApi)
-    const obj = data({ a: 1, b: 2, c: 3 });
+    const obj = ref({ a: 1, b: 2, c: 3 });
     const total = computed(() => {
       // good: anonymous function use 'this'
       // bad: arrow function use 'this'
